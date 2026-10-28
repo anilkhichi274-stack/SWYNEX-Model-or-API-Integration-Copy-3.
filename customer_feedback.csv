@@ -1,0 +1,25 @@
+feedback,sentiment
+The service was excellent,Positive
+I really liked the product,Positive
+Amazing customer support,Positive
+The experience was wonderful,Positive
+Very helpful staff,Positive
+The product works perfectly,Positive
+Fast delivery and great quality,Positive
+I am very satisfied,Positive
+The service was terrible,Negative
+I am disappointed with the product,Negative
+Very poor customer support,Negative
+The delivery was too late,Negative
+The product stopped working,Negative
+I had a bad experience,Negative
+The quality was disappointing,Negative
+I am not satisfied,Negative
+The service was average,Neutral
+The product is okay,Neutral
+Delivery was on time,Neutral
+The experience was normal,Neutral
+The product arrived yesterday,Neutral
+The service was neither good nor bad,Neutral
+The packaging was standard,Neutral
+The product matches the description,Neutral
