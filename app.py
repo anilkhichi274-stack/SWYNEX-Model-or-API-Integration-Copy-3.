@@ -1,43 +1,54 @@
 
 import pandas as pd
+from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
 
-# Load customer feedback dataset
+# Load dataset
 data = pd.read_csv("customer_feedback.csv")
 
-# Create AI classification pipeline
+# Create improved AI model
 model = Pipeline([
-    ("tfidf", TfidfVectorizer(ngram_range=(1, 2))),
-    ("classifier", LogisticRegression(max_iter=1000))
+    ("tfidf", TfidfVectorizer(
+        analyzer="char_wb",
+        ngram_range=(2, 5)
+    )),
+    ("classifier", LogisticRegression(
+        max_iter=2000,
+        C=10
+    ))
 ])
 
-# Train the model
+# Train AI model
 model.fit(data["feedback"], data["sentiment"])
 
-print("AI Customer Feedback Classification")
-print("Model trained successfully!")
+print("AI Model trained successfully!")
 
-# Test the model with example feedback
+# Example predictions
 examples = [
     "The product is excellent",
     "Very bad customer service",
-    "The product is okay"
+    "The product is okay",
+    "I am very happy with the service",
+    "The delivery was terrible"
 ]
+
+print("\nAI CUSTOMER FEEDBACK CLASSIFICATION")
 
 for feedback in examples:
     prediction = model.predict([feedback])[0]
-    print(f"Feedback: {feedback}")
-    print(f"Predicted Sentiment: {prediction}")
-    print("-------------------------")
+    print("Feedback:", feedback)
+    print("Prediction:", prediction)
+    print("--------------------------")
 
-# Interactive prediction
+# User input
 while True:
-    feedback = input("Enter customer feedback (or type exit): ")
+    feedback = input(
+        "\nEnter customer feedback (or exit): "
+    )
 
     if feedback.lower() == "exit":
         break
 
     prediction = model.predict([feedback])[0]
-    print("Predicted Sentiment:", prediction)
+    print("AI Prediction:", prediction)
